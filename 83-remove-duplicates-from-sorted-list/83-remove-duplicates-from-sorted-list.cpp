@@ -21,7 +21,6 @@ public:
             l.push_back(head->val);
             head = head->next;
         }
-        l.sort();
         l.unique();
         int size = l.size();
         cout<<size<<'\n';
