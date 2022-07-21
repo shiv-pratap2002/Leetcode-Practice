@@ -7,10 +7,10 @@ public:
         if(k==0)
         {
             map<int,int>m;
-            int l=0,p=0;
-            while(l<nums.size())
+            int p=0;
+            for(int i=0;i<nums.size();i++)
             {
-                m[nums[l++]]++;
+                m[nums[i]]++;
             }
             for(auto i:m)
             {
