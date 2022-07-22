@@ -11,30 +11,22 @@
  */
 class Solution {
 public:
-    vector<int>v;
-    void iot(TreeNode *root)
+    void iot(TreeNode *root, TreeNode * &ans)
     {
         if(root==nullptr)
         {
             return;
         }
-        iot(root->left);
-        v.push_back(root->val);
-        iot(root->right);
+        iot(root->left,ans);
+        ans->right = new TreeNode(root->val);
+        ans = ans->right;
+        iot(root->right,ans);
     }
     TreeNode* increasingBST(TreeNode* root) {
-        iot(root);
-        for(int i = 0 ; i < v.size(); i++)
-        {
-            cout<<v[i]<<' ';
-        }
-        TreeNode *temp = new TreeNode(v[0]);
-        TreeNode *head = temp;
-        for(int i = 1 ; i < v.size();i++)
-        {
-            temp->right = new TreeNode(v[i]);
-            temp = temp->right;
-        }
-        return head;
+        TreeNode *ans  = new TreeNode();
+        TreeNode *p = ans;
+        
+        iot(root,p);
+        return ans->right;
     }
 };
