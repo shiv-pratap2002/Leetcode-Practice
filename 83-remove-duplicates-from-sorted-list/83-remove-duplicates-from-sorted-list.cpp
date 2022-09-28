@@ -15,28 +15,15 @@ public:
         {
             return nullptr;
         }
-        list<int>l;
-        while(head!=nullptr)
+         ListNode *curr = head;
+        while(curr)
         {
-            l.push_back(head->val);
-            head = head->next;
+            while(curr->next and curr->next->val == curr->val)
+            {
+                curr->next = curr->next->next;
+            }
+            curr = curr->next;
         }
-        l.unique();
-        int size = l.size();
-        cout<<size<<'\n';
-        ListNode*q = new ListNode(l.front());
-        l.pop_front();
-        ListNode*p = q;
-        int i = 1;
-        while(i<size)
-        {
-            ListNode*n = new ListNode(l.front());
-            cout<<l.front()<<'\n';
-            p->next = n;
-            l.pop_front();
-            i++;
-            p = p->next;
-        }
-        return q;
+         return head;
     }
 };
