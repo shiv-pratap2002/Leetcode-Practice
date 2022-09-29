@@ -18,6 +18,7 @@ public:
                         dp[x.first]=cost+x.second;
                         q.push({x.first,dp[x.first]});
                     }
+                    cout<<x.first<<' ';
                 }
             }
             cnt++;
@@ -30,9 +31,9 @@ public:
             adj[flights[i][0]].push_back({flights[i][1],flights[i][2]});
         }
         map<int,int> dp;
-        for(int i=0;i<n;i++)dp[i]=INT_MAX;
+        for(int i=0;i<n;i++)dp[i]=1e9;
         bfs(adj,dp,k,src);
-        if(dp[dst] == INT_MAX)return -1;
+        if(dp[dst] == 1e9)return -1;
         return dp[dst];
     }
 };
